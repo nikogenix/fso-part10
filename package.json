@@ -8,13 +8,16 @@
 		"ios": "expo start --ios",
 		"web": "expo start --web",
 		"lint": "eslint ./src/**/*.{js,jsx} App.js --no-error-on-unmatched-pattern",
-    "postinstall": "rndebugger-open"
+		"postinstall": "rndebugger-open",
+		"preinstall": "npx npm-force-resolutions"
 	},
 	"dependencies": {
 		"@expo/webpack-config": "^18.0.1",
 		"expo": "^48.0.17",
 		"expo-status-bar": "~1.4.0",
 		"react": "18.2.0",
+		"react-devtools": "4.22.0",
+		"react-devtools-core": "4.22.0",
 		"react-dom": "18.2.0",
 		"react-native": "0.71.8",
 		"react-native-web": "~0.18.7"
@@ -28,7 +31,7 @@
 		"react-native-debugger-open": "^0.3.25"
 	},
 	"private": true,
-	"overrides": {
-		"react-devtools-core": "~4.25.0"
+	"resolutions": {
+		"react-devtools-core": "4.22.0"
 	}
 }
