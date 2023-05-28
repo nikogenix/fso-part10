@@ -1,0 +1,34 @@
+{
+	"name": "fso-part10",
+	"version": "1.0.0",
+	"main": "node_modules/expo/AppEntry.js",
+	"scripts": {
+		"start": "expo start",
+		"android": "expo start --android",
+		"ios": "expo start --ios",
+		"web": "expo start --web",
+		"lint": "eslint ./src/**/*.{js,jsx} App.js --no-error-on-unmatched-pattern",
+    "postinstall": "rndebugger-open"
+	},
+	"dependencies": {
+		"@expo/webpack-config": "^18.0.1",
+		"expo": "^48.0.17",
+		"expo-status-bar": "~1.4.0",
+		"react": "18.2.0",
+		"react-dom": "18.2.0",
+		"react-native": "0.71.8",
+		"react-native-web": "~0.18.7"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.12.9",
+		"@babel/eslint-parser": "^7.21.8",
+		"eslint": "^8.41.0",
+		"eslint-plugin-react": "^7.32.2",
+		"eslint-plugin-react-native": "^4.0.0",
+		"react-native-debugger-open": "^0.3.25"
+	},
+	"private": true,
+	"overrides": {
+		"react-devtools-core": "~4.25.0"
+	}
+}
