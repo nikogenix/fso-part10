@@ -1,7 +1,8 @@
 import { Text as NativeText, Pressable, StyleSheet } from "react-native";
 
 import theme from "../theme";
-import { Link } from "react-router-native";
+import { Link, useNavigate } from "react-router-native";
+import useSignOut from "../../hooks/useSignOut";
 
 const styles = StyleSheet.create({
 	tab: {
@@ -30,6 +31,20 @@ const AppBarTab = ({ style, ...props }) => {
 		style,
 	];
 	const { path } = props;
+
+	if (path === "/signout") {
+		const signOut = useSignOut();
+		const navigate = useNavigate();
+		const onSignOut = async () => {
+			await signOut();
+			navigate("/");
+		};
+		return (
+			<Pressable style={styles.button} onPress={onSignOut}>
+				<NativeText style={textStyle} {...props} />
+			</Pressable>
+		);
+	}
 	return (
 		<Pressable style={styles.button}>
 			<Link to={path}>

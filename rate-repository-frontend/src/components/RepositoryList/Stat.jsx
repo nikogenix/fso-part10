@@ -1,5 +1,5 @@
 import Text from "../Text";
-import { convertIntToK } from "../../utils";
+import { convertIntToK } from "../../utils/utils";
 import { StyleSheet, View } from "react-native";
 
 const styles = StyleSheet.create({
