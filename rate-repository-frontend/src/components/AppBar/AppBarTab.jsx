@@ -16,7 +16,6 @@ const styles = StyleSheet.create({
 		color: theme.colors.textSecondary,
 	},
 	button: {
-		width: 130,
 		paddingLeft: theme.padding.appBarHorizontal,
 		paddingRight: theme.padding.appBarHorizontal,
 		paddingTop: theme.padding.appBarVertical,

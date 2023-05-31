@@ -26,7 +26,7 @@ const theme = {
 	},
 	padding: {
 		appBarVertical: 20,
-		appBarHorizontal: 5,
+		appBarHorizontal: 15,
 	},
 };
 
