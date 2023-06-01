@@ -21,10 +21,11 @@ const AppBar = () => {
 		<View style={styles.container}>
 			<ScrollView horizontal>
 				<AppBarTab path={"/"}>Repositories</AppBarTab>
-				{user.me === null && <AppBarTab path={"/signin"}>Sign In</AppBarTab>}
-				{user.me === null && <AppBarTab path={"/signup"}>Sign Up</AppBarTab>}
+				{user.me === null && <AppBarTab path={"/signin"}>Sign in</AppBarTab>}
+				{user.me === null && <AppBarTab path={"/signup"}>Sign up</AppBarTab>}
 				{user.me?.username && <AppBarTab path={"/createreview"}>Create a review</AppBarTab>}
-				{user.me?.username && <AppBarTab path={"/signout"}>Sign Out</AppBarTab>}
+				{user.me?.username && <AppBarTab path={"/myreviews"}>My reviews</AppBarTab>}
+				{user.me?.username && <AppBarTab path={"/signout"}>Sign out</AppBarTab>}
 			</ScrollView>
 		</View>
 	);

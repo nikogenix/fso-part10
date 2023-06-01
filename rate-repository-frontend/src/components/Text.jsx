@@ -21,6 +21,9 @@ const styles = StyleSheet.create({
 	colorPinkLight: {
 		color: theme.colors.pinkLight,
 	},
+	colorAppBarBackground: {
+		color: theme.colors.appBarBackground,
+	},
 	fontSizeSubheading: {
 		fontSize: theme.fontSizes.subheading,
 	},
@@ -39,6 +42,7 @@ const Text = ({ color, fontSize, fontWeight, style, alignCenter, ...props }) => 
 		color === "primary" && styles.colorPrimary,
 		color === "white" && styles.colorWhite,
 		color === "pinkLight" && styles.colorPinkLight,
+		color === "appBarBackground" && styles.colorAppBarBackground,
 		fontSize === "subheading" && styles.fontSizeSubheading,
 		fontWeight === "bold" && styles.fontWeightBold,
 		alignCenter && styles.alignCenter,
