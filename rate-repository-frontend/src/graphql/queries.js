@@ -4,12 +4,30 @@ import { REPOSITORY_INFO } from "./fragments";
 import { REVIEW_INFO } from "./fragments";
 
 export const GET_REPOSITORIES = gql`
-	query ($orderDirection: OrderDirection, $orderBy: AllRepositoriesOrderBy, $searchKeyword: String) {
-		repositories(orderDirection: $orderDirection, orderBy: $orderBy, searchKeyword: $searchKeyword) {
+	query (
+		$orderDirection: OrderDirection
+		$orderBy: AllRepositoriesOrderBy
+		$searchKeyword: String
+		$first: Int
+		$after: String
+	) {
+		repositories(
+			orderDirection: $orderDirection
+			orderBy: $orderBy
+			searchKeyword: $searchKeyword
+			first: $first
+			after: $after
+		) {
 			edges {
 				node {
 					...RepositoryInfo
 				}
+				cursor
+			}
+			pageInfo {
+				endCursor
+				startCursor
+				hasNextPage
 			}
 		}
 	}
@@ -17,14 +35,20 @@ export const GET_REPOSITORIES = gql`
 `;
 
 export const GET_REPOSITORY = gql`
-	query Repository($id: ID!) {
+	query Repository($id: ID!, $first: Int, $after: String) {
 		repository(id: $id) {
 			...RepositoryInfo
-			reviews {
+			reviews(first: $first, after: $after) {
 				edges {
 					node {
 						...ReviewInfo
 					}
+					cursor
+				}
+				pageInfo {
+					endCursor
+					startCursor
+					hasNextPage
 				}
 			}
 		}

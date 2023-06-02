@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
 
 const ItemSeparator = () => <View style={styles.separator} />;
 
-export const RepositoryListContainer = ({ repositories, sorting, searching }) => {
+export const RepositoryListContainer = ({ repositories, sorting, searching, onEndReach }) => {
 	const navigate = useNavigate();
 
 	const repositoryNodes = repositories ? repositories.edges.map((edge) => edge.node) : [];
@@ -49,6 +49,8 @@ export const RepositoryListContainer = ({ repositories, sorting, searching }) =>
 				</Pressable>
 			)}
 			keyExtractor={(item) => item.id}
+			onEndReached={onEndReach}
+			onEndReachedThreshold={0.9}
 			ListHeaderComponent={
 				<>
 					<TextInput placeholder="🔎" value={search} onChangeText={(value) => setSearch(value)}></TextInput>
@@ -80,13 +82,18 @@ const RepositoryList = () => {
 	const [search, setSearch] = useState("");
 	const [debouncedSearch] = useDebounce(search, 500);
 
-	const { repositories } = useRepositories(orderBy, orderDirection, debouncedSearch);
+	const { repositories, fetchMore } = useRepositories({ orderBy, orderDirection, debouncedSearch, first: 10 });
+
+	const onEndReach = () => {
+		fetchMore();
+	};
 
 	return (
 		<RepositoryListContainer
 			repositories={repositories}
 			sorting={{ setOrderBy, setOrderDirection }}
 			searching={{ search, setSearch }}
+			onEndReach={onEndReach}
 		/>
 	);
 };

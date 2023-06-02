@@ -1,5 +1,6 @@
 import { StyleSheet, View } from "react-native";
 import { Route, Routes, Navigate } from "react-router-native";
+import { Dimensions } from "react-native";
 
 import RepositoryList from "./RepositoryList/RepositoryList";
 import AppBar from "./AppBar/AppBar";
@@ -19,8 +20,10 @@ const styles = StyleSheet.create({
 });
 
 const Main = () => {
+	const windowHeight = Dimensions.get("window").height;
+
 	return (
-		<View style={styles.container}>
+		<View style={{ ...styles.container, height: windowHeight }}>
 			<AppBar />
 			<Routes>
 				<Route path="/" element={<RepositoryList />} exact />
